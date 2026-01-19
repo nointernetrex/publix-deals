@@ -5,8 +5,12 @@ It reads Publix_Final.docx and generates index.html for GitHub Pages.
 """
 
 import re
+import sys
 from pathlib import Path
 from docx import Document
+
+# Check if running in CI mode (no user prompts)
+CI_MODE = '--ci' in sys.argv
 
 # Paths
 SCRIPT_DIR = Path(__file__).parent
@@ -559,7 +563,8 @@ def main():
     if not DOCX_PATH.exists():
         print(f"\nError: Could not find {DOCX_PATH}")
         print("Make sure Publix_Final.docx is in the same folder as this script.")
-        input("\nPress Enter to exit...")
+        if not CI_MODE:
+            input("\nPress Enter to exit...")
         return
 
     print(f"\nReading: {DOCX_PATH}")
@@ -578,7 +583,8 @@ def main():
 
     print("\nWebsite generated successfully!")
     print(f"Output: {OUTPUT_PATH}")
-    input("\nPress Enter to exit...")
+    if not CI_MODE:
+        input("\nPress Enter to exit...")
 
 
 if __name__ == "__main__":
