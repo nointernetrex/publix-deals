@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publix Couponing Cheat Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1a5f2a 0%, #2d8f47 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            color: white;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .valid-dates {
+            background: #fff3cd;
+            color: #856404;
+            padding: 10px 20px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        nav {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 10px;
+            z-index: 100;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        nav a {
+            display: block;
+            padding: 10px 20px;
+            background: #1a5f2a;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            background: #2d8f47;
+            transform: translateY(-2px);
+        }
+
+        section {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            color: #1a5f2a;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #1a5f2a;
+        }
+
+        section h3 {
+            color: #2d8f47;
+            font-size: 1.3rem;
+            margin: 25px 0 15px 0;
+        }
+
+        .stack-deal {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 5px solid #1a5f2a;
+        }
+
+        .stack-deal h4 {
+            color: #1a5f2a;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+        .stack-deal .sale-items,
+        .stack-deal .coupons,
+        .stack-deal .buy-list,
+        .stack-deal .why-works {
+            margin-bottom: 15px;
+        }
+
+        .stack-deal strong {
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .stack-deal ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .stack-deal li {
+            padding: 5px 0 5px 20px;
+            position: relative;
+        }
+
+        .stack-deal li:before {
+            content: "\2022";
+            color: #2d8f47;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .why-works {
+            background: #e8f5e9;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .bogo-grid, .coupon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 15px;
+        }
+
+        .deal-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid #e9ecef;
+        }
+
+        .deal-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .deal-card h5 {
+            color: #1a5f2a;
+            font-size: 1rem;
+            margin-bottom: 8px;
+        }
+
+        .deal-card .offer {
+            background: #ff6b35;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .deal-card .savings {
+            color: #28a745;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .deal-card .valid {
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+
+        .coupon-card {
+            background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+            border: 2px dashed #1a5f2a;
+        }
+
+        .coupon-card .savings-amount {
+            background: #28a745;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 8px;
+        }
+
+        .coupon-card .description {
+            color: #555;
+            font-size: 0.9rem;
+            margin-top: 8px;
+        }
+
+        .coupon-card .expires {
+            color: #dc3545;
+            font-size: 0.8rem;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        .category-header {
+            background: #e8f5e9;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 25px 0 15px 0;
+            font-weight: 600;
+            color: #1a5f2a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .bogo-grid, .coupon-grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Publix Couponing Cheat Sheet</h1>
+            <p>Your Complete Guide to Saving Big</p>
+            <div class="valid-dates">Valid January 14 - 20, 2025</div>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#triple-stacks">Triple Stacks</a></li>
+                <li><a href="#double-stacks">Double Stacks</a></li>
+                <li><a href="#bogo-deals">BOGO Deals</a></li>
+                <li><a href="#digital-coupons">Digital Coupons</a></li>
+            </ul>
+        </nav>
+
+        <!-- TRIPLE STACKS SECTION -->
+        <section id="triple-stacks">
+            <h2>Triple Stacks (Checkout-Safe)</h2>
+
+            <div class="stack-deal">
+                <h4>P&G Paper Stock-Up: Charmin + Bounty</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Charmin Bathroom Tissue (Mega XL Rolls 12-ct OR Mega XXL Rolls 9-ct) - $19.99</li>
+                        <li>Bounty Paper Towels (Double Rolls 6-ct OR Triple Rolls 4-ct) - $11.79</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupons:</strong>
+                    <ul>
+                        <li>SAVE $10.00 when you spend $40.00 [P&G]</li>
+                        <li>Save $3.00 on ONE Bounty Paper Towel Product 6 Roll Count or Larger</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>1 x Charmin Mega XL 12-ct OR Mega XXL 9-ct</li>
+                        <li>2 x Bounty Paper Towels (must be 6-roll count or larger to trigger the $3 coupon)</li>
+                    </ul>
+                </div>
+                <div class="why-works">
+                    <strong>Why this works:</strong> Charmin and Bounty are both P&G brands, so they count toward the $40 threshold and the Bounty item coupon applies with the right pack size.
+                </div>
+            </div>
+
+            <div class="stack-deal">
+                <h4>Kimberly-Clark Paper Haul: Cottonelle + Scott + Kleenex</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Cottonelle Ultra Clean or Ultra Comfort Bath Tissue (18-ct Mega Rolls) - $17.99</li>
+                        <li>Scott 1000 Bath Tissue 12-ct OR Scott Comfort Plus Mega Rolls 18-ct - $9.99</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupons:</strong>
+                    <ul>
+                        <li>Save $10.00 when you spend $40 on Kleenex, Cottonelle and Scott products</li>
+                        <li>Save $4.00 on any ONE (1) Cottonelle Bath Tissue 18 Mega Rolls</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>2 x Cottonelle 18-ct Mega Rolls</li>
+                        <li>1 x Scott 1000 12-ct OR Scott Comfort Plus Mega Rolls 18-ct</li>
+                        <li>1 x Kleenex Facial Tissue (any qualifying item to help reach $40)</li>
+                    </ul>
+                </div>
+                <div class="why-works">
+                    <strong>Why this works:</strong> Kleenex, Cottonelle, and Scott are Kimberly-Clark brands, so they combine to hit the $40 threshold and the Cottonelle item coupon stacks.
+                </div>
+            </div>
+
+            <div class="stack-deal">
+                <h4>Georgia-Pacific Household Bundle: Brawny + Dixie</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Brawny Paper Towels (6-roll pack as advertised) - $14.99</li>
+                        <li>Dixie Plates (64-154 ct) - $8.49</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupons:</strong>
+                    <ul>
+                        <li>Save $5 when you spend $20 (Georgia-Pacific)</li>
+                        <li>Save $2.00 on any ONE (1) package of Brawny Paper Towels, 6 roll or larger</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>1 x Brawny Paper Towels (must be 6-roll count or larger)</li>
+                        <li>1 x Dixie Plates (64-154 ct)</li>
+                    </ul>
+                </div>
+                <div class="why-works">
+                    <strong>Why this works:</strong> Brawny and Dixie are Georgia-Pacific brands, so they count toward the same $20 threshold and the Brawny item coupon applies with the correct pack size.
+                </div>
+            </div>
+
+            <div class="stack-deal">
+                <h4>Rana Family Dinner Stack</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Rana Family Size Pasta (20 oz varieties) - $6.99</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupons:</strong>
+                    <ul>
+                        <li>Save $5.00 when you Purchase $20 of Rana Pasta or Sauce Items.</li>
+                        <li>Save $1.00 on any ONE (1) Rana Smoked Beef Brisket Ravioli OR Beef Short Rib Ravioli</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>3 x Rana Family Size pastas (20 oz each)</li>
+                        <li>One must be Smoked Beef Brisket Ravioli OR Beef Short Rib Ravioli to use the $1 coupon</li>
+                    </ul>
+                </div>
+                <div class="why-works">
+                    <strong>Why this works:</strong> All items are Rana-branded and count toward the $20 threshold; the $1 coupon applies to one qualifying ravioli variety.
+                </div>
+            </div>
+        </section>
+
+        <!-- DOUBLE STACKS SECTION -->
+        <section id="double-stacks">
+            <h2>Double Stacks (Specific)</h2>
+
+            <div class="stack-deal">
+                <h4>Tide Laundry Detergent</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Tide Liquid Laundry Detergent 73-84 oz - $19.99</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupon:</strong>
+                    <ul>
+                        <li>Save $3.00 on ONE Tide Laundry Detergent 73-84 oz</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>1 x Tide Liquid Laundry Detergent 73-84 oz</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stack-deal">
+                <h4>Swiffer PowerMop Starter Kit</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Swiffer PowerMop Starter Kit - $29.99</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupon:</strong>
+                    <ul>
+                        <li>Save $10.00 on ONE Swiffer PowerMop Starter Kit (excludes trial/travel size)</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>1 x Swiffer PowerMop Starter Kit</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stack-deal">
+                <h4>Scott Bath Tissue</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Scott 1000 12-pk OR Scott Comfort Plus Mega Rolls 18-pk Bath Tissue - $9.99</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupon:</strong>
+                    <ul>
+                        <li>Save $1.00 on any ONE (1) Scott 1000 12ct+ or Scott Comfort Plus 12FR+</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>1 x Scott qualifying pack</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stack-deal">
+                <h4>Kleenex Facial Tissue Bundle Packs</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>Kleenex Facial Tissue (bundle packs) - 2/$11.00</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupon:</strong>
+                    <ul>
+                        <li>Save $1.00 on any ONE (1) Kleenex facial tissue bundle pack</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>1 x Kleenex facial tissue bundle pack (3-4 ct)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="stack-deal">
+                <h4>Pepsi 12-Pack Deal</h4>
+                <div class="sale-items">
+                    <strong>Sale:</strong>
+                    <ul>
+                        <li>12-Pack Pepsi Products - Buy 2 Get 2 FREE (when you buy 4 total)</li>
+                    </ul>
+                </div>
+                <div class="coupons">
+                    <strong>Digital Coupon:</strong>
+                    <ul>
+                        <li>Save $3.00 on any FOUR (4) participating Pepsi-Cola beverages and Gatorade multi-pack only (No Single Serve)</li>
+                    </ul>
+                </div>
+                <div class="buy-list">
+                    <strong>Buy:</strong>
+                    <ul>
+                        <li>4 x qualifying PepsiCo multipacks (use 12-packs per ad)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- BOGO DEALS SECTION -->
+        <section id="bogo-deals">
+            <h2>BOGO Deals - Buy One Get One Free</h2>
+
+            <div class="category-header">Food</div>
+            <div class="bogo-grid">
+                <div class="deal-card">
+                    <h5>Tombstone Pizza</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Pearl Milling Company Pancake & Waffle Mix</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.69</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Dunkin' Coffee</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $11.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Thomas' Bagels</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Pepperidge Farm Farmhouse Bread</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Kellogg's Special K Cereal</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $7.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Quaker Rice Crisps</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $2.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Nestle Coffee Mate Coffee Creamer</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Cheez-It Family Size Crackers</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $7.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Celentano Pasta</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.29</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Hungry-Man Dinners</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Musselman's Apple Sauce</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.59</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Welch's Fruit Snacks</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Pioneer Gravy Mix</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $1.59</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Chex Mix Snack</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $3.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Belgioioso Snacking Cheese</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Late July Snacks Tortilla Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Daiya Cheese Alternative Cheddar Style</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Betty Crocker Cookie Mix</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $7.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Campbell's Soup</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $3.05</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Nabisco Oreo Cookies</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.19</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Somos Rice</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $3.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Cookie Pop Popcorn</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Planet Oat Oatmilk</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Sara Lee Butter Bread</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.49</div>
+                    <div class="valid">Valid 1/7 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Swiss Miss Hot Cocoa Mix</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $10.39</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>The Laughing Cow Spreadable Cheese</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $7.19</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Totino's Pizza Rolls</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Tyson Breaded & Stuffed Chicken</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+            </div>
+
+            <div class="category-header">Snacks & Beverages</div>
+            <div class="bogo-grid">
+                <div class="deal-card">
+                    <h5>Ken's Steak House Dressing</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.69</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Doritos Tortilla Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.29</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Healthy Choice Cafe Steamers Entree</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.39</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Siete Grain Free Tortilla Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Gold Peak Tea</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $9.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Utz Potato Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Stacy's Pita Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.19</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Gatorlyte Electrolyte Beverage</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $3.29</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Steak-umm Sandwich Steaks</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $12.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Pepsi Products</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $2.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Takis Tortilla Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Jocko Hydrate Sports Drink</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $2.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Bare Apple Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Apple & Eve 100% Juice</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Hawaiian Punch Juice Drink</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $3.16</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Lipton Tea</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save $3.00 with digital coupon</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>R.W. Knudsen Family Juice</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $13.29</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Terra Vegetable Chips</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+            </div>
+
+            <div class="category-header">Household</div>
+            <div class="bogo-grid">
+                <div class="deal-card">
+                    <h5>Glisten Dishwasher Cleaner</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $4.19</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Finish Automatic Dishwasher Detergent</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $10.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Arm & Hammer Laundry Detergent</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $7.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+            </div>
+
+            <div class="category-header">Health & Personal Care</div>
+            <div class="bogo-grid">
+                <div class="deal-card">
+                    <h5>Colgate Max Fresh Toothpaste</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $3.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Dial Body Wash</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.59</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Nature Made Dietary Supplements</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $41.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Skinnydipped Almonds</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $5.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Kind Healthy Grains Granola Clusters</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $9.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Zicam Cold Remedy</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $12.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+            </div>
+
+            <div class="category-header">More Great BOGO Deals</div>
+            <div class="bogo-grid">
+                <div class="deal-card">
+                    <h5>Ben & Jerry's Ice Cream</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $6.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Breyers Ice Cream</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $8.69</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Haagen-Dazs Ice Cream Bars</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $9.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Marie Callender's Pot Pie</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $14.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Blue Diamond Almonds</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $11.69</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Jack Link's Jerky</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $19.29</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Entenmann's Products</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $19.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Glaceau Smartwater</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $15.69</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Pompeian Imported Olive Oil</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $13.49</div>
+                    <div class="valid">Valid 1/7 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Hatfield Bacon</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $11.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Arm & Hammer Cat Litter</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $14.49</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Prairie Fresh Pork Tenderloin</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $9.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Oscar Mayer Wieners</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $7.95</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Tyson Chicken Sliders</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $9.99</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+                <div class="deal-card">
+                    <h5>Weber Seasoning</h5>
+                    <span class="offer">Buy 1 Get 1 Free</span>
+                    <div class="savings">Save Up To $10.79</div>
+                    <div class="valid">Valid 1/14 - 1/20</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DIGITAL COUPONS SECTION -->
+        <section id="digital-coupons">
+            <h2>Digital Coupons</h2>
+
+            <div class="category-header">Food</div>
+            <div class="coupon-grid">
+                <div class="deal-card coupon-card">
+                    <h5>Chobani</h5>
+                    <span class="savings-amount">Save $1.00 on 2</span>
+                    <div class="description">Save $1.00 on any TWO (2) Chobani Multipack or Multiserve Yogurts</div>
+                    <div class="expires">Expires 02/07</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>General Mills</h5>
+                    <span class="savings-amount">Save $1.00 on 2</span>
+                    <div class="description">SAVE $1.00 on 2 General Mills Cereals</div>
+                    <div class="expires">Expires 02/14</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Kellogg's Cereal</h5>
+                    <span class="savings-amount">Save $1.00</span>
+                    <div class="description">SAVE $1.00 on any ONE (1) Kellogg's Cereals</div>
+                    <div class="expires">Expires 03/11</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Rana</h5>
+                    <span class="savings-amount">Save $5.00</span>
+                    <div class="description">Save $5.00 when you Purchase $20 of Rana Pasta or Sauce Items</div>
+                    <div class="expires">Expires 01/23</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Sun-Maid</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) Sun-Maid Raisin Loaf Bread 16oz</div>
+                    <div class="expires">Expires 02/11</div>
+                </div>
+            </div>
+
+            <div class="category-header">Snacks & Beverages</div>
+            <div class="coupon-grid">
+                <div class="deal-card coupon-card">
+                    <h5>Coca Cola, Dasani</h5>
+                    <span class="savings-amount">Free with purchase</span>
+                    <div class="expires">Expires 01/30</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Pepsi & Pepsi Zero Sugar</h5>
+                    <span class="savings-amount">Free with purchase</span>
+                    <div class="expires">Expires 01/25</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Tostitos</h5>
+                    <span class="savings-amount">Save $2.00 on 4</span>
+                    <div class="description">Save $2.00 when you buy TWO (2) Tostitos dips AND TWO (2) Tostitos chips</div>
+                    <div class="expires">Expires 03/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Lay's</h5>
+                    <span class="savings-amount">Save $2.00 on 4</span>
+                    <div class="description">Save $2.00 when you buy TWO (2) Lay's dips AND TWO (2) Lay's chips (6-8oz)</div>
+                    <div class="expires">Expires 03/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>PepsiCo</h5>
+                    <span class="savings-amount">Save $3.00 on 4</span>
+                    <div class="description">Save $3.00 on any FOUR (4) participating Pepsi-Cola beverages and Gatorade Multi-pack</div>
+                    <div class="expires">Expires 01/21</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>BOOST</h5>
+                    <span class="savings-amount">Save $6.00 on 2</span>
+                    <div class="description">Save $6.00 on any TWO (2) BOOST Nutritional Drink 4pks or large</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+            </div>
+
+            <div class="category-header">Household</div>
+            <div class="coupon-grid">
+                <div class="deal-card coupon-card">
+                    <h5>Kleenex, Cottonelle, Scott</h5>
+                    <span class="savings-amount">Save $10.00</span>
+                    <div class="description">Save $10.00 when you spend $40 on Kleenex, Cottonelle and Scott products</div>
+                    <div class="expires">Expires 01/28</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Cottonelle Toilet Paper</h5>
+                    <span class="savings-amount">Save $4.00</span>
+                    <div class="description">Save $4.00 on any ONE (1) Cottonelle Bath Tissue 18 Mega Rolls</div>
+                    <div class="expires">Expires 01/28</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Brawny</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) package of Brawny Paper Towels, 6 roll or larger</div>
+                    <div class="expires">Expires 02/15</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Bounty</h5>
+                    <span class="savings-amount">Save $3.00</span>
+                    <div class="description">Save $3.00 on ONE Bounty Paper Towel Product 6 Roll Count or Larger</div>
+                    <div class="expires">Expires 01/24</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Tide</h5>
+                    <span class="savings-amount">Save $3.00</span>
+                    <div class="description">Save $3.00 on ONE Tide Laundry Detergent 73-84 oz</div>
+                    <div class="expires">Expires 01/23</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Cascade</h5>
+                    <span class="savings-amount">Save $3.00</span>
+                    <div class="description">Save $3.00 on ONE Cascade Platinum Plus 22ct or larger</div>
+                    <div class="expires">Expires 01/23</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Swiffer PowerMop</h5>
+                    <span class="savings-amount">Save $10.00</span>
+                    <div class="description">Save $10.00 on ONE Swiffer PowerMop Starter Kit</div>
+                    <div class="expires">Expires 01/23</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Quilted Northern</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) package of Quilted Northern Bath Tissue, 8 Super Mega or 12 Mega roll or larger</div>
+                    <div class="expires">Expires 02/15</div>
+                </div>
+            </div>
+
+            <div class="category-header">Health & Personal Care</div>
+            <div class="coupon-grid">
+                <div class="deal-card coupon-card">
+                    <h5>Dove</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) Dove Body Wash (20oz+), Bar (4ct+), or Scrub (15oz)</div>
+                    <div class="expires">Expires 01/24</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Irish Spring or Softsoap</h5>
+                    <span class="savings-amount">Save $4.00 on 2</span>
+                    <div class="description">Save $4.00 on any TWO (2) Irish Spring or Softsoap Body Washes (20oz or larger)</div>
+                    <div class="expires">Expires 01/21</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Colgate</h5>
+                    <span class="savings-amount">Save $2.50</span>
+                    <div class="description">Save $2.50 on any ONE (1) Colgate Toothbrush, Mouthwash or Mouth Rinse</div>
+                    <div class="expires">Expires 01/21</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Olay</h5>
+                    <span class="savings-amount">Save $3.00</span>
+                    <div class="description">Save $3.00 on ONE Olay Super Serum Body Wash or Lotion</div>
+                    <div class="expires">Expires 01/24</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Axe</h5>
+                    <span class="savings-amount">Save $6.00 on 2</span>
+                    <div class="description">Save $6.00 on any TWO (2) AXE Body Sprays or Sticks</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>NIVEA</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) NIVEA Body Lotion or Cream Product</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Eucerin</h5>
+                    <span class="savings-amount">Save $3.00</span>
+                    <div class="description">Save $3.00 on any ONE (1) Eucerin Body, Baby, Face or Sun Product</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>MiraLAX</h5>
+                    <span class="savings-amount">Save $6.00</span>
+                    <div class="description">Save $6.00 on any ONE (1) MiraLAX product 20ct+ or Mix-Ins 20ct</div>
+                    <div class="expires">Expires 01/24</div>
+                </div>
+            </div>
+
+            <div class="category-header">Brand Spend Thresholds</div>
+            <div class="coupon-grid">
+                <div class="deal-card coupon-card">
+                    <h5>P&G</h5>
+                    <span class="savings-amount">Save $10.00</span>
+                    <div class="description">SAVE $10.00 when you spend $40.00 on P&G products</div>
+                    <div class="expires">Expires 01/23</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Georgia-Pacific</h5>
+                    <span class="savings-amount">Save $5.00</span>
+                    <div class="description">Save $5 when you spend $20 on Georgia-Pacific products</div>
+                    <div class="expires">Expires 01/21</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Unilever</h5>
+                    <span class="savings-amount">Save $5.00 on 3</span>
+                    <div class="description">Save $5.00 on any THREE (3) Axe, Dove, Dove Men+Care, Degree, Nexxus, Tresemme, Schmidt's, Shea Moisture or Vaseline</div>
+                    <div class="expires">Expires 02/13</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Bayer</h5>
+                    <span class="savings-amount">Save $5.00</span>
+                    <div class="description">Save $5.00 when you spend $25.00 on select Bayer products</div>
+                    <div class="expires">Expires 01/23</div>
+                </div>
+            </div>
+
+            <div class="category-header">Medicine & Wellness</div>
+            <div class="coupon-grid">
+                <div class="deal-card coupon-card">
+                    <h5>Zyrtec</h5>
+                    <span class="savings-amount">Save $4.00</span>
+                    <div class="description">Save $4.00 on any (1) Adult ZYRTEC 24-60ct. product or Children's ZYRTEC 24-48ct or 8 oz</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Claritin</h5>
+                    <span class="savings-amount">Save $10.00</span>
+                    <div class="description">Save $10.00 on any ONE (1) Non-Drowsy Claritin or Children's Claritin 56ct+</div>
+                    <div class="expires">Expires 02/14</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Mucinex, Delsym</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) Mucinex or Delsym Product</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Tylenol</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) TYLENOL Cold OR TYLENOL Sinus product</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Advil</h5>
+                    <span class="savings-amount">Save $2.00</span>
+                    <div class="description">Save $2.00 on any ONE (1) Adult Advil, Advil PM or Advil Targeted Relief</div>
+                    <div class="expires">Expires 01/31</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Nicorette and Nicoderm</h5>
+                    <span class="savings-amount">Save $15.00</span>
+                    <div class="description">Save $15 on any ONE (1) Nicoderm CQ 14 ct Or Larger Or Nicorette 72ct Or Larger</div>
+                    <div class="expires">Expires 02/14</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Nexium</h5>
+                    <span class="savings-amount">Save $5.00</span>
+                    <div class="description">Save $5.00 on any ONE (1) Nexium 24HR 28ct or 42ct</div>
+                    <div class="expires">Expires 02/01</div>
+                </div>
+                <div class="deal-card coupon-card">
+                    <h5>Florastor</h5>
+                    <span class="savings-amount">Save $8.00</span>
+                    <div class="description">Save $8.00 on any ONE (1) Florastor Product</div>
+                    <div class="expires">Expires 02/14</div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Data sourced from Publix Weekly Ad</p>
+            <p>Clip digital coupons in the Publix app before shopping!</p>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
