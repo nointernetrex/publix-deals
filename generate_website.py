@@ -126,21 +126,22 @@ def generate_css():
 /* Robinhood-inspired: clean, confident, modern */
 
 :root {
-    --primary-green: #00875a;
-    --primary-dark: #004d40;
-    --accent-lime: #00d084;
+    --primary-green: #00d084;
+    --primary-dark: #00875a;
+    --accent-lime: #00ff9d;
     --accent-teal: #20c997;
-    --bg-dark: #0a0f0d;
-    --bg-card: #ffffff;
-    --bg-hover: #f8faf9;
-    --text-primary: #1a1a1a;
-    --text-secondary: #5f6368;
-    --text-muted: #9aa0a6;
-    --border-light: #e8eaed;
-    --border-medium: #dadce0;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
-    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --bg-dark: #000000;
+    --bg-card: #111111;
+    --bg-elevated: #1a1a1a;
+    --bg-hover: #222222;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --text-muted: #666666;
+    --border-light: #2a2a2a;
+    --border-medium: #333333;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.4);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.5);
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
@@ -160,7 +161,7 @@ html {
 
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(180deg, #f8faf9 0%, #f0f4f2 100%);
+    background: #000000;
     color: var(--text-primary);
     line-height: 1.6;
     min-height: 100vh;
@@ -174,7 +175,7 @@ body {
     transform: translate(-50%, -50%);
     width: 800px;
     height: 900px;
-    opacity: 0.06;
+    opacity: 0.08;
     pointer-events: none;
     z-index: 0;
 }
@@ -184,7 +185,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(0, 0, 0, 0.9);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-light);
     padding: 0 24px;
@@ -269,7 +270,7 @@ body {
     position: relative;
     padding: 80px 24px 60px;
     text-align: center;
-    background: linear-gradient(180deg, #ffffff 0%, #f8faf9 100%);
+    background: linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
     border-bottom: 1px solid var(--border-light);
 }
 
@@ -317,7 +318,7 @@ body {
     font-size: 1.1rem;
     border: 2px solid var(--border-medium);
     border-radius: var(--radius-full);
-    background: white;
+    background: var(--bg-card);
     color: var(--text-primary);
     transition: var(--transition);
     outline: none;
@@ -381,7 +382,7 @@ body {
     font-weight: 600;
     border: 2px solid var(--border-medium);
     border-radius: var(--radius-full);
-    background: white;
+    background: var(--bg-card);
     color: var(--text-secondary);
     cursor: pointer;
     transition: var(--transition);
@@ -458,7 +459,7 @@ body {
 
 /* ===== DEALS LIST ===== */
 .deals-list {
-    background: white;
+    background: var(--bg-card);
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-light);
     overflow: hidden;
@@ -484,7 +485,7 @@ body {
 }
 
 .deal-row:nth-child(even) {
-    background: rgba(248, 250, 249, 0.5);
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .deal-row:nth-child(even):hover {
@@ -553,7 +554,7 @@ body {
 .deal-tag {
     font-size: 0.8rem;
     padding: 4px 10px;
-    background: var(--bg-hover);
+    background: var(--bg-elevated);
     color: var(--text-muted);
     border-radius: var(--radius-sm);
 }
@@ -567,7 +568,7 @@ body {
     padding: 8px 14px;
     font-size: 0.85rem;
     font-weight: 500;
-    background: var(--bg-hover);
+    background: var(--bg-elevated);
     border: 1px solid var(--border-medium);
     border-radius: var(--radius-sm);
     cursor: pointer;
@@ -624,11 +625,11 @@ body {
 .stack-why {
     margin-top: 8px;
     padding: 12px 16px;
-    background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+    background: rgba(245, 158, 11, 0.1);
     border-radius: var(--radius-sm);
     border-left: 3px solid #f59e0b;
     font-size: 0.9rem;
-    color: #92400e;
+    color: #fbbf24;
 }
 
 /* ===== NO RESULTS ===== */
@@ -730,7 +731,7 @@ body {
 
 /* ===== ABOUT SECTION ===== */
 .about-section {
-    background: white;
+    background: var(--bg-card);
     border-radius: var(--radius-lg);
     padding: 48px;
     margin-bottom: 48px;
@@ -773,7 +774,7 @@ body {
         top: 100%;
         left: 0;
         right: 0;
-        background: white;
+        background: var(--bg-card);
         flex-direction: column;
         padding: 16px;
         border-bottom: 1px solid var(--border-light);
@@ -1270,24 +1271,24 @@ def generate_html(content):
 <body>
     <!-- Sasquatch Watermark -->
     <svg class="squatch-watermark" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <ellipse cx="200" cy="320" rx="95" ry="130" fill="#1a3d2e"/>
-        <ellipse cx="200" cy="145" rx="75" ry="85" fill="#1a3d2e"/>
-        <ellipse cx="200" cy="185" rx="40" ry="50" fill="#0d1f17"/>
-        <rect x="172" y="158" width="12" height="18" rx="2" fill="#2d5a45"/>
-        <rect x="188" y="155" width="12" height="22" rx="2" fill="#2d5a45"/>
-        <rect x="208" y="158" width="12" height="18" rx="2" fill="#2d5a45"/>
-        <ellipse cx="160" cy="110" rx="18" ry="12" fill="#2d5a45"/>
-        <ellipse cx="240" cy="110" rx="18" ry="12" fill="#2d5a45"/>
-        <ellipse cx="160" cy="110" rx="10" ry="6" fill="#3d7a5a"/>
-        <ellipse cx="240" cy="110" rx="10" ry="6" fill="#3d7a5a"/>
-        <ellipse cx="60" cy="210" rx="50" ry="110" fill="#1a3d2e" transform="rotate(-35 60 210)"/>
-        <ellipse cx="340" cy="210" rx="50" ry="110" fill="#1a3d2e" transform="rotate(35 340 210)"/>
-        <circle cx="20" cy="110" r="40" fill="#1a3d2e"/>
-        <circle cx="380" cy="110" r="40" fill="#1a3d2e"/>
-        <ellipse cx="145" cy="460" rx="45" ry="90" fill="#1a3d2e"/>
-        <ellipse cx="255" cy="460" rx="45" ry="90" fill="#1a3d2e"/>
-        <ellipse cx="135" cy="495" rx="55" ry="22" fill="#0d1f17"/>
-        <ellipse cx="265" cy="495" rx="55" ry="22" fill="#0d1f17"/>
+        <ellipse cx="200" cy="320" rx="95" ry="130" fill="#00d084"/>
+        <ellipse cx="200" cy="145" rx="75" ry="85" fill="#00d084"/>
+        <ellipse cx="200" cy="185" rx="40" ry="50" fill="#00875a"/>
+        <rect x="172" y="158" width="12" height="18" rx="2" fill="#00ff9d"/>
+        <rect x="188" y="155" width="12" height="22" rx="2" fill="#00ff9d"/>
+        <rect x="208" y="158" width="12" height="18" rx="2" fill="#00ff9d"/>
+        <ellipse cx="160" cy="110" rx="18" ry="12" fill="#00ff9d"/>
+        <ellipse cx="240" cy="110" rx="18" ry="12" fill="#00ff9d"/>
+        <ellipse cx="160" cy="110" rx="10" ry="6" fill="#00ffaa"/>
+        <ellipse cx="240" cy="110" rx="10" ry="6" fill="#00ffaa"/>
+        <ellipse cx="60" cy="210" rx="50" ry="110" fill="#00d084" transform="rotate(-35 60 210)"/>
+        <ellipse cx="340" cy="210" rx="50" ry="110" fill="#00d084" transform="rotate(35 340 210)"/>
+        <circle cx="20" cy="110" r="40" fill="#00d084"/>
+        <circle cx="380" cy="110" r="40" fill="#00d084"/>
+        <ellipse cx="145" cy="460" rx="45" ry="90" fill="#00d084"/>
+        <ellipse cx="255" cy="460" rx="45" ry="90" fill="#00d084"/>
+        <ellipse cx="135" cy="495" rx="55" ry="22" fill="#00875a"/>
+        <ellipse cx="265" cy="495" rx="55" ry="22" fill="#00875a"/>
     </svg>
 
     <!-- Header -->
