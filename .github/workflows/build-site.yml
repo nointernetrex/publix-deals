@@ -6,6 +6,9 @@ on:
       - 'Publix_Final.docx'
   workflow_dispatch:  # Allows manual trigger from GitHub
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
