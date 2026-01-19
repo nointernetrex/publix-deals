@@ -41,22 +41,58 @@ def parse_document():
 
         # Detect main sections
         if 'TRIPLE STACKS' in text.upper():
+            # Save last deal from previous section if exists
+            if current_deal and current_section in ['triple_stacks', 'double_stacks']:
+                content[current_section].append(current_deal)
+                current_deal = None
             current_section = 'triple_stacks'
+            current_field = None
             continue
         elif 'DOUBLE STACKS' in text.upper():
+            # Save last deal from previous section if exists
+            if current_deal and current_section in ['triple_stacks', 'double_stacks']:
+                content[current_section].append(current_deal)
+                current_deal = None
             current_section = 'double_stacks'
+            current_field = None
             continue
         elif 'BOGO DEALS' in text.upper():
+            # Save last deal from previous section if exists
+            if current_deal and current_section in ['triple_stacks', 'double_stacks']:
+                content[current_section].append(current_deal)
+                current_deal = None
             current_section = 'bogo_deals'
+            current_field = None
             continue
-        elif 'DIGITAL COUPONS' in text.upper():
+        elif 'DIGITAL COUPONS' in text.upper() and not text.endswith(':'):
             current_section = 'digital_coupons'
+            current_field = None
             continue
 
         # Handle Triple and Double Stacks
         if current_section in ['triple_stacks', 'double_stacks']:
-            # New deal starts with a name containing ":"
-            if ':' in text and not text.startswith('-') and not text.startswith('Sale') and not text.startswith('Digital') and not text.startswith('Buy') and not text.startswith('Why'):
+            # Check for field headers
+            if text == 'Sale:':
+                current_field = 'sale'
+            elif text.startswith('Digital Coupon'):
+                current_field = 'coupons'
+            elif text == 'Buy:':
+                current_field = 'buy'
+            elif text == 'Why this works:':
+                current_field = 'why'
+            # List items start with "-", "–" (en dash), "•" (bullet), or spaces
+            elif (text.startswith('-') or text.startswith('–') or text.startswith('•') or text.startswith(' ')) and current_deal and current_field:
+                item = text.lstrip('-–•  ').strip()
+                if current_field == 'why':
+                    current_deal['why'] = item
+                else:
+                    current_deal[current_field].append(item)
+            # "Why this works" explanation (no dash, after "Why this works:" header)
+            elif current_field == 'why' and current_deal and not text.startswith('-'):
+                current_deal['why'] = text
+                current_field = None  # Reset so next paragraph is treated as new deal
+            # New deal name (not a field header, not a list item, not a "why" continuation)
+            elif not text.startswith('-') and current_field != 'why':
                 if current_deal:
                     content[current_section].append(current_deal)
                 current_deal = {
@@ -67,22 +103,6 @@ def parse_document():
                     'why': ''
                 }
                 current_field = None
-            elif text.startswith('Sale:'):
-                current_field = 'sale'
-            elif text.startswith('Digital Coupon'):
-                current_field = 'coupons'
-            elif text.startswith('Buy:'):
-                current_field = 'buy'
-            elif text.startswith('Why this works:'):
-                current_field = 'why'
-            elif text.startswith('-') and current_deal and current_field:
-                item = text.lstrip('- ').strip()
-                if current_field == 'why':
-                    current_deal['why'] = item
-                else:
-                    current_deal[current_field].append(item)
-            elif current_field == 'why' and current_deal and not text.startswith('-'):
-                current_deal['why'] = text
 
         # Handle BOGO Deals and Digital Coupons (categorized lists)
         elif current_section in ['bogo_deals', 'digital_coupons']:
